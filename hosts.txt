@@ -1,0 +1,6 @@
+>> OmniPing : #FFFFFF : 3.0
+192.168.1.254 : BT Home Hub : PING
+192.168.1.254 : BT Home Hub : HTTP
+192.168.1.254 : BT Home Hub : HTTPS
+192.168.1.15 : desk laptop : PING
+192.168.1.30 : DELL LAPTOP : PING

@@ -1,0 +1,10 @@
+env_omni/
+.vscode/
+__pycache__
+*.pyc
+test_*.py
+old_*.py
+test_*.js
+old_*.js
+*.log
+*.json

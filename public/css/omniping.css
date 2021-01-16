@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    background-color: #ffffff;
+}
+
+div#banner{
+    border-bottom: 1px solid #33BB33;
+}
+
+div#banner h1, div#banner p{
+    padding-left: 10px;
+}
+
+
+
+div#info table{
+    border-collapse: collapse;
+}
+div#info td{
+    border-top: none;
+    border-bottom: none;
+    padding: 2px 40px;
+}
+
+img.hidden{
+    display: none;
+}
+
+
+
+div#nav{
+    padding: 10px 0px 0px 4px;
+    border-bottom: 1px solid #33BB33;
+}
+
+div#main{
+    /* border: 1px solid red; */
+    padding: 10px 0px 0px 4px;
+}
+
+div#main button{
+    margin: 0px 3px 10px 0px;
+}
+
+div.capitalize{
+    text-transform: capitalize;
+    /* color: #555; */
+    padding: 0px 10px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+textarea#settings-tests{
+    height: 35em; 
+}
+
+div#modal, div#curtain{
+    position: fixed;
+    background-color: rgba(99, 99, 99, 0.5);
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+
+
+div#modal-content{
+    z-index: 11;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    top: 50px;
+    border: 1px solid #33BB33;
+}
+
+div.modal-display{
+    margin: 10px 30px;
+    /* border: 1px solid #33BB33; */
+}
+
+textarea#config-file{
+    height: 36em; 
+}
+
+button.running {
+    background-color: rgba(255, 136, 136, 0.3);
+}
+
+.container {
+    max-width: 1100px;
+}
+
+tr.fail {
+    background-color: rgba(255, 136, 136, 0.3);
+}
+
+tr.incomplete {
+    background-color: rgba(255, 226, 172, 0.09);
+}
+
+td.highlight {
+    background-color: rgba(255, 250, 115, 0.371);
+}
+
+table#report-table {
+    border-collapse: collapse;
+
+}
+table#report-table td.narrow{
+    padding: 3px 15px;
+}
