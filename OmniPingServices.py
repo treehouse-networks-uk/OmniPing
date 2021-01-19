@@ -61,8 +61,8 @@ class OmniPingSetUp():
             False
         )]
     default_heading = 'OmniPing'
-    default_colour = '#FFF9ED'
-    default_interval = 2.0
+    default_colour = '#FFFFFF'
+    default_interval = 4.0
     desc_re = r'^[0-9a-z\-\_\' ]+$'
     colour_re = r'^#[0-9a-f]{6}$'
     host_re = r'^\S+$'
@@ -220,6 +220,8 @@ class OmniPingSetUp():
                         desc = testhost_match.group(3).strip()
                         test = testhost_match.group(4).upper()
                         self.tests.append((host, desc, test, live))
+            if not len(self.tests):
+                self.tests = self.default_tests
         except FileNotFoundError:
             cherrypy.log('[II] Can\'t find tests_file !!')
 

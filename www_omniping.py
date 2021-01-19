@@ -73,7 +73,7 @@ if __name__ == '__main__':
     }
 
     # set the Version number and start the page and application
-    version = '0.10'
+    version = '0.11'
     op = OmniPingPage(path=cwd)
     op.omniping = OmniPingService(version=version, path=cwd)
     cherrypy.quickstart(op, '/', conf)

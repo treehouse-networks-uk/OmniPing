@@ -1,0 +1,92 @@
+[19/Jan/2021:20:00:49]  [II] Starting OmniPing Version 0.10
+[19/Jan/2021:20:00:49] ENGINE Listening for SIGTERM.
+[19/Jan/2021:20:00:49] ENGINE Listening for SIGHUP.
+[19/Jan/2021:20:00:49] ENGINE Listening for SIGUSR1.
+[19/Jan/2021:20:00:49] ENGINE Bus STARTING
+[19/Jan/2021:20:00:49] ENGINE Started monitor thread 'Autoreloader'.
+[19/Jan/2021:20:00:50] ENGINE Serving on http://0.0.0.0:8080
+[19/Jan/2021:20:00:50] ENGINE Bus STARTED
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET / HTTP/1.1" 200 2360 "" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/css/skeleton.css HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/js/omniping_client.js HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/css/omniping.css HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/js/omniping_UiController.js HTTP/1.1" 200 21449 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/images/err.png HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /omniping/version HTTP/1.1" 200 111 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/images/on.png HTTP/1.1" 200 718 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /omniping/tests HTTP/1.1" 200 1563 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:00:56] "GET /static/images/off.png HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:02:46] ENGINE Restarting because /home/gareth/omniping/OmniPingServices.py changed.
+[19/Jan/2021:20:02:46] ENGINE Stopped thread 'Autoreloader'.
+[19/Jan/2021:20:02:46] ENGINE Bus STOPPING
+[19/Jan/2021:20:02:46] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('0.0.0.0', 8080)) shut down
+[19/Jan/2021:20:02:46] ENGINE Bus STOPPED
+[19/Jan/2021:20:02:46] ENGINE Bus EXITING
+[19/Jan/2021:20:02:46] ENGINE Bus EXITED
+[19/Jan/2021:20:02:46] ENGINE Waiting for child threads to terminate...
+[19/Jan/2021:20:02:46] ENGINE Re-spawning python3 www_omniping.py
+[19/Jan/2021:20:02:47]  [II] Starting OmniPing Version 0.10
+[19/Jan/2021:20:02:47] ENGINE Listening for SIGTERM.
+[19/Jan/2021:20:02:47] ENGINE Listening for SIGHUP.
+[19/Jan/2021:20:02:47] ENGINE Listening for SIGUSR1.
+[19/Jan/2021:20:02:47] ENGINE Bus STARTING
+[19/Jan/2021:20:02:47] ENGINE Started monitor thread 'Autoreloader'.
+[19/Jan/2021:20:02:47] ENGINE Serving on http://0.0.0.0:8080
+[19/Jan/2021:20:02:47] ENGINE Bus STARTED
+[19/Jan/2021:20:02:50] ENGINE Keyboard Interrupt: shutting down bus
+[19/Jan/2021:20:02:50] ENGINE Bus STOPPING
+[19/Jan/2021:20:02:50] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('0.0.0.0', 8080)) shut down
+[19/Jan/2021:20:02:50] ENGINE Stopped thread 'Autoreloader'.
+[19/Jan/2021:20:02:50] ENGINE Bus STOPPED
+[19/Jan/2021:20:02:50] ENGINE Bus EXITING
+[19/Jan/2021:20:02:50] ENGINE Bus EXITED
+[19/Jan/2021:20:02:50] ENGINE Waiting for child threads to terminate...
+[19/Jan/2021:20:03:00]  [II] Starting OmniPing Version 0.10
+[19/Jan/2021:20:03:00] ENGINE Listening for SIGTERM.
+[19/Jan/2021:20:03:00] ENGINE Listening for SIGHUP.
+[19/Jan/2021:20:03:00] ENGINE Listening for SIGUSR1.
+[19/Jan/2021:20:03:00] ENGINE Bus STARTING
+[19/Jan/2021:20:03:00] ENGINE Started monitor thread 'Autoreloader'.
+[19/Jan/2021:20:03:00] ENGINE Serving on http://0.0.0.0:8080
+[19/Jan/2021:20:03:00] ENGINE Bus STARTED
+192.168.1.30 - - [19/Jan/2021:20:03:03] "GET / HTTP/1.1" 200 2360 "" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:03] "GET /static/js/omniping_UiController.js HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:03] "GET /omniping/version HTTP/1.1" 200 111 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:03] "GET /static/images/on.png HTTP/1.1" 200 718 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:03] "GET /omniping/tests HTTP/1.1" 200 1669 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:03] "GET /static/images/on.png HTTP/1.1" 200 718 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:33] "POST /omniping/setup HTTP/1.1" 200 1750 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:35]  [II] Started Polling (4.0 secs)
+192.168.1.30 - - [19/Jan/2021:20:03:35] "POST /omniping/engine HTTP/1.1" 200 58 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:36] "GET /omniping/run HTTP/1.1" 200 1675 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:36] "GET /static/images/failed.png HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:39] "GET /omniping/run HTTP/1.1" 200 1768 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:39] "GET /static/images/success.png HTTP/1.1" 304 - "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:39]  [II] Poll Count: 1 - Time 0:00:02.005256
+192.168.1.30 - - [19/Jan/2021:20:03:41] "GET /omniping/run HTTP/1.1" 200 1803 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:43]  [II] Poll Count: 2 - Time 0:00:06.014536
+192.168.1.30 - - [19/Jan/2021:20:03:44] "GET /omniping/run HTTP/1.1" 200 1822 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:47] "GET /omniping/run HTTP/1.1" 200 1822 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:47]  [II] Poll Count: 3 - Time 0:00:10.021727
+192.168.1.30 - - [19/Jan/2021:20:03:50] "GET /omniping/run HTTP/1.1" 200 1821 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:51]  [II] Poll Count: 4 - Time 0:00:14.028279
+192.168.1.30 - - [19/Jan/2021:20:03:53] "GET /omniping/run HTTP/1.1" 200 1821 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:55]  [II] Poll Count: 5 - Time 0:00:18.035441
+192.168.1.30 - - [19/Jan/2021:20:03:56] "GET /omniping/run HTTP/1.1" 200 1821 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:03:59] "GET /omniping/run HTTP/1.1" 200 1821 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:03:59]  [II] Poll Count: 6 - Time 0:00:22.042601
+[19/Jan/2021:20:04:01]  [II] Stopped Polling
+192.168.1.30 - - [19/Jan/2021:20:04:01] "POST /omniping/engine HTTP/1.1" 200 48 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:04:02] "GET /omniping/run HTTP/1.1" 200 1822 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:04:03]  [II] Poll Count: 7 - Time 0:00:26.049933
+192.168.1.30 - - [19/Jan/2021:20:04:05] "GET /omniping/run HTTP/1.1" 200 1822 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:04:05] "GET /omniping/run HTTP/1.1" 200 1822 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+192.168.1.30 - - [19/Jan/2021:20:04:07] "GET /omniping/tests HTTP/1.1" 200 1727 "http://192.168.1.155:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
+[19/Jan/2021:20:04:26] ENGINE Keyboard Interrupt: shutting down bus
+[19/Jan/2021:20:04:26] ENGINE Bus STOPPING
+[19/Jan/2021:20:04:26] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('0.0.0.0', 8080)) shut down
+[19/Jan/2021:20:04:26] ENGINE Stopped thread 'Autoreloader'.
+[19/Jan/2021:20:04:26] ENGINE Bus STOPPED
+[19/Jan/2021:20:04:26] ENGINE Bus EXITING
+[19/Jan/2021:20:04:26] ENGINE Bus EXITED
+[19/Jan/2021:20:04:26] ENGINE Waiting for child threads to terminate...

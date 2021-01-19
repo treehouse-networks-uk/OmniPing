@@ -438,9 +438,9 @@ const UICtrl = (function(client){
 
     targetText = `${test.test}: ${test.host} - (${test.desc})`;
     tabRow.appendChild(makeTd(targetText));
-    let src = "http://192.168.1.155:8080/static/images/failed.png";
+    let src = "/static/images/failed.png";
     if (test.good){
-      src = "http://192.168.1.155:8080/static/images/success.png";
+      src = "/static/images/success.png";
     }
     tabRow.appendChild(makeTdImg(src));
     tabRow.appendChild(makeTd(test.status));
