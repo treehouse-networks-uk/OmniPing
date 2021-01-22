@@ -8,3 +8,4 @@ test_*.js
 old_*.js
 *.json
 ToDo.txt
+omniPing.log
