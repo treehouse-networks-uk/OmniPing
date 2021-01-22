@@ -1,14 +1,13 @@
 
 from datetime import datetime
+import time
 import os
 import re
 
 import cherrypy
 from cherrypy.process.plugins import BackgroundTask
-from OmniPingTestClass import OmniPingTester
-import time
 
-import pprint
+from OmniPingTestClass import OmniPingTester
 
 
 class OmniPingVersion():
