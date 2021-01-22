@@ -1,4 +1,15 @@
->> OmniPing : #FFFFFF : 4.0
-192.168.1.254 : Useful Description : PING
-192.168.1.254 : Useful Description : HTTP
-192.168.1.254 : Useful Description : HTTPS
+>> From Jupyter Tests : #FFFFFF : 2.0
+www.hotmail.com : test : HTTP
+www.google.com : test : HTTP
+192.168.1.254 : BT Home Hub : HTTP
+192.168.1.20 : nas : HTTP
+192.168.1.20 : nas : HTTPS
+www.hotmail.com : test : HTTP
+www.google.com : test : HTTP
+192.168.1.254 : BT Home Hub : HTTP
+jira.nuancehce.com : Martyns work : HTTPS
+www.hotmail.com : test : HTTP
+www.google.com : test : HTTP
+192.168.1.254 : BT Home Hub : HTTPS
+192.168.1.20 : nas : HTTP
+192.168.1.15 : desk : PING

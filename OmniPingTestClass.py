@@ -146,11 +146,11 @@ class OmniPingTester():
         Method to test using HTTP or HTTPS using HTTP3 Library
         HTTP3 has async capabilities
         '''
+        test_info['last_stat'] = test_info['status']
+        test_info['rtt'] = '--'
+        test_info['good'] = False
+        test_info['status'] = 'Incomplete'
         try:
-            test_info['rtt'] = '--'
-            test_info['good'] = False
-            test_info['last_stat'] = test_info['status']
-            test_info['status'] = 'Incomplete'
             client = http3.AsyncClient()
             start = time.time()
             if test_info['test'] == 'HTTP':
@@ -159,43 +159,41 @@ class OmniPingTester():
             if test_info['test'] == 'HTTPS':
                 url = f'https://{test_info["host"]}'
                 resp = await client.get(url, timeout=self.timeout, verify=False)
-            test_info['total'] += 1
-            test_info['rtt'] = '{:.2f} ms'.format((time.time() - start) * 1000)
-            test_info['total_successes'] += 1
-            test_info['last_good'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['good'] = True
             test_info['status'] = self.stat_dict.get(resp.status_code, 'Unknown')
 
         except http3.exceptions.RedirectLoop:
-            test_info['last_bad'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['good'] = False
             test_info['status'] = 'Redirect Loop'
 
         except http3.exceptions.ConnectTimeout:
-            test_info['last_bad'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['good'] = False
             test_info['status'] = 'Time Out'
 
         except http3.exceptions.ReadTimeout:
-            test_info['last_bad'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['good'] = False
             test_info['status'] = 'Time Out'
 
         except socket.gaierror:
-            test_info['last_bad'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['good'] = False
             test_info['status'] = 'Bad Address'
 
         except OSError:
-            test_info['last_bad'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['good'] = False
             test_info['status'] = 'Unreachable'
 
         except asyncio.CancelledError:
             print('Cancelled !!')
 
+        test_info['total'] += 1
+
         if not test_info['good']:
+            test_info['last_bad'] = datetime.now().strftime('%a %H:%M:%S')
             test_info['last_bad_status'] = test_info['status']
+        else:
+            test_info['last_good'] = datetime.now().strftime('%a %H:%M:%S')
+            test_info['total_successes'] += 1
+            test_info['rtt'] = '{:.2f} ms'.format((time.time() - start) * 1000)
 
         test_info['success_percent'] = sucPer(
                                             test_info['total'],

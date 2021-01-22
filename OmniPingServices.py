@@ -310,14 +310,22 @@ class OmniPingTestEng():
     content = [
         '''When it comes to results if it says "Good" with a tick then obvisouly,
         things are good. If you see a cross and a row turns red then the status
-        should explain what has happened. If you see "Incomplete" and the row is
-        amber then the report has been requested whilst a test has not completed.
-        The durations of the tests can vary; a failed ping takes long than a
-        successful one. If you haveany doubts then stopping polling should allow
-        any outstanding tests to complete.''',
-        '''If you find too many incomplete tasks you could try and reduce the
-        interval between tests. Or try running less tests if possible.
-        the Client Auto refresh runs every 3 Seconds ''',
+        should explain what has happened. If you see "Incomplete" then the report
+        has been requested whilst a test has not completed.''',
+        '''The durations of the tests can vary; a failed ping takes long than a
+        successful one. If you have any doubts then stopping polling should allow
+        any outstanding tests to complete. If you find too many incomplete tasks
+        you could try and reduce the interval between tests. Or try running less
+        tests if possible.''',
+        '''The Client Auto-refresh runs every 3 Seconds, so if you are polling devices
+        every second you are more likely to ask for a report when some tests have not
+        completed.''',
+        '''When Running HTTP and HTTPS tests it is not obvious how best to treat any
+        given HTTP error code, for example a 401 or 403 might be expected and hence
+        be a good result showing the server is available. As such any HTTP response
+        code is not considered a failure and subsequenetly Not flagged as a failure.
+        However, the status will be highlighted yellow if it isn't good. just so it
+        stands out. Hope that makes sense.''',
     ]
 
     def __init__(self, setup):

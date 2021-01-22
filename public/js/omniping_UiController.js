@@ -426,6 +426,7 @@ const UICtrl = (function(client){
     if (test.status == '--'){
       tabRow.classList = '';
     }else if (test.status === 'Incomplete' && test.last_stat[0] !== 'G'){
+      console.log(test)
       tabRow.classList = 'fail';
       dontFlag = true;
     }else if(test.status === 'Incomplete'){
@@ -443,7 +444,11 @@ const UICtrl = (function(client){
       src = "/static/images/success.png";
     }
     tabRow.appendChild(makeTdImg(src));
-    tabRow.appendChild(makeTd(test.status));
+    let flagStat = false;
+    if (test.status[0] !== 'G' && !dontFlag){
+      flagStat= true;
+    }
+    tabRow.appendChild(makeTd(test.status, flagStat));
     percText = `${test.total_successes} / ${test.total} (${test.success_percent})`;
     flag = false;
     if(test.total != test.total_successes && !dontFlag){
