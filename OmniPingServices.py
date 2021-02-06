@@ -67,25 +67,29 @@ class OmniPingSetUp():
     host_re = r'^\S+$'
 
     content = [
-        '''Use the above page to set up the Omniping Server.
-        Colour sets the colour of the banner at the top of the page.
-        This is simply to make the page more recogniable if you have multiple
-        instances running. It uses the standard hexidecimal RGB colour used in web design.
-        The heading is also a means to describe the instance in the event that there is more than
-        one. The output is displayed in the curly braces at the top of the page.''',
+        '''Use this page to set up the Omniping Service. Colour sets the colour of
+        the banner at the top of the page. The heading is displayed in the curly
+        braces at the top of the page. These are simply to make the page more
+        recognisable if you have multiple instances running at different points in
+        a network. The colour field uses the standard hexadecimal RGB colour used
+        in web design.''',
         '''The polling interval is simply the frequency with which the tests are run.
-        Whilst this can be set to 0.5 seconds at its lowest it is better to set the interval to
-        a reasonable value such as 2. Increased traffic loading can be achieved by duplicating
-        tests to increase load, granularity.
+        Whilst this can be set to 1 seconds at its lowest it is better to set the
+        interval to a reasonable value such as 2. Increased traffic loading can be
+        achieved by duplicating tests to increase load. This has the additional benefit
+        of utilising additional source port numbers which may help pick up issues where
+        load sharing over multiple paths based on source and destination socket hashes.
         The tests are set up using the following format:''',
         '''<span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;
         host : description : type</span> ''',
-        '''A "#" can be used to comment out an entry which will be preserved but not tested ie: ''',
+        '''A "#" can be used to comment out an entry which will be preserved but not
+        tested ie:''',
         '''<span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;
         # host : description : type </span>''',
-        '''The "host" field can be an IP address or domain name (NOTE: appropriate DNS resolution
-        needs to be considered when running within the container). Acceptable test types are
-        PING | HTTP | HTTPS (NOTE: some additional CPU overhead is anticipated for HTTPS tests)'''
+        '''The "host" field can be an IP address or domain name (NOTE: appropriate DNS
+        resolution needs to be considered when running within the container). 
+        Acceptable test types are PING | HTTP | HTTPS (NOTE: some additional CPU
+        overhead is anticipated for HTTPS tests)'''
     ]
 
     def __init__(self, path):
@@ -152,7 +156,6 @@ class OmniPingSetUp():
                 raise cherrypy.HTTPError(400, f'{mess}')
 
         new_tests = self.check_tests(cherrypy.request.json.get('tests', False))
-
         message = self.update(update_dict, new_tests)
         self.save_setup_to_file()
         response = self.make_response()
@@ -249,7 +252,6 @@ class OmniPingSetUp():
         if not re.search(self.host_re, test[0].strip(), re.IGNORECASE):
             return False
         if not re.search(self.desc_re, test[1].strip(), re.IGNORECASE):
-            print('here')
             return False
         if test[2].upper() not in ['PING', 'HTTP', 'HTTPS']:
             return False
@@ -270,31 +272,46 @@ class OmniPingSetUp():
         self.pending_changes = True
         return new_tests
 
+    def has_changed(self, new_tests):
+        if len(new_tests) != len(self.tests):
+            return True
+
+        for pos, test in enumerate(new_tests):
+            for index in range(0, 4):
+                if test[index] != self.tests[pos][index]:
+                    return True
+        return False
+
     def update(self, update_dict, new_tests):
         mess_list = []
-        if update_dict.get('heading', False):
+        mess_prepend = ''
+        if self.has_changed(new_tests):
+            self.tests = new_tests
+            mess_list.append('Tests')
+
+        new_heading = update_dict.get('heading', False)
+        new_interval = update_dict.get('interval', False)
+        new_colour = update_dict.get('colour', False)
+        if new_heading and new_heading != self.heading:
             self.heading = update_dict['heading']
             mess_list.append('Heading')
-        if update_dict.get('interval', False):
+        if new_interval and new_interval != self.interval:
             self.interval = update_dict['interval']
             mess_list.append('Interval')
-        if update_dict.get('colour', False):
+        if new_colour and new_colour != self.colour:
             self.colour = update_dict['colour'].upper()
             mess_list.append('Colour')
-        if new_tests:
-            self.tests = new_tests
-            test_count = len(new_tests)
-            ess = ''
-            if test_count != 1:
-                ess = 's'
-            mess_list.append(f'{test_count} Test{ess}')
+
+        if not self.tests:
+            mess_prepend = ("- 0 tests Defined !!")
 
         if len(mess_list) > 1:
-            message = f'Updated: {", ".join(mess_list[0:-1])} & {mess_list[-1]}'
+            message = f'Updated: {", ".join(mess_list[0:-1])} & {mess_list[-1]}{mess_prepend}'
         elif len(mess_list) == 1:
-            message = f'Updated: {mess_list[0]}'
+            message = f'Updated: {mess_list[0]} {mess_prepend}'
         else:
-            message = f'No changed made'
+            message = f'No changes made {mess_prepend}'
+
         return message
 
 
@@ -307,7 +324,7 @@ class OmniPingTestEng():
     exposed = True
 
     content = [
-        '''When it comes to results if it says "Good" with a tick then obvisouly,
+        '''When it comes to results if it says "Good" with a tick then obviously,
         things are good. If you see a cross and a row turns red then the status
         should explain what has happened. If you see "Incomplete" then the report
         has been requested whilst a test has not completed.''',
@@ -316,15 +333,15 @@ class OmniPingTestEng():
         any outstanding tests to complete. If you find too many incomplete tasks
         you could try and reduce the interval between tests. Or try running less
         tests if possible.''',
-        '''The Client Auto-refresh runs every 3 Seconds, so if you are polling devices
-        every second you are more likely to ask for a report when some tests have not
-        completed.''',
-        '''When Running HTTP and HTTPS tests it is not obvious how best to treat any
-        given HTTP error code, for example a 401 or 403 might be expected and hence
-        be a good result showing the server is available. As such any HTTP response
-        code is not considered a failure and subsequenetly Not flagged as a failure.
-        However, the status will be highlighted yellow if it isn't good. just so it
-        stands out. Hope that makes sense.''',
+        '''The Client Auto-refresh runs every 3 Seconds, so if you are polling
+        devices every second you are more likely to ask for a report when some
+        tests have not completed.''',
+        '''When Running HTTP and HTTPS tests it is not obvious how best to treat
+        any given HTTP error code, for example a 401 or 403 might be expected and
+        hence be a good result showing the server is available. As such any HTTP
+        response code is not considered a failure and subsequently Not flagged as
+        a failure. However, the status will be highlighted yellow if it isn't good.
+        Just so it stands out. Hope that makes sense.'''
     ]
 
     def __init__(self, setup):
@@ -358,8 +375,11 @@ class OmniPingTestEng():
                 if self.setup.pending_changes:
                     self.report = self.make_initial_report()
                     self.setup.pending_changes = False
-                self.start()
-                update = f'Started Polling ({self.setup.interval} secs)'
+                if len(self.report['tests']) != 1:
+                    self.start()
+                    update = f'Started Polling ({self.setup.interval} secs)'
+                else:
+                    update = 'No Tests: Not starting'
             if action == 'stop' and self.running:
                 self.stop()
                 update = "Stopped Polling"
@@ -399,8 +419,6 @@ class OmniPingTestEng():
         the function refrenced by the CherryPy background task to update the report
         '''
         self.report = self.tester.run_once(self.report)
-        # pprint.pprint(new_report)
-        # self.report = new_report
         cherrypy.log(f'[II] Poll Count: {self.report["count"]} - Time {self.report["duration"]}')
 
     def start(self):

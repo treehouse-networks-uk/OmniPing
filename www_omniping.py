@@ -55,7 +55,6 @@ if __name__ == '__main__':
     conf = {
       '/': {
         'request.show_tracebacks': False,
-        'tools.staticdir.root': os.path.abspath(cwd),
         'tools.encode.on': True,
         'tools.encode.encoding: ': 'utf-8',
       },
@@ -68,12 +67,13 @@ if __name__ == '__main__':
       },
       '/static': {
         'tools.staticdir.on': True,
+        'tools.staticdir.root': os.path.abspath(cwd),
         'tools.staticdir.dir': './public'
       }
     }
 
     # set the Version number and start the page and application
-    version = '0.12'
+    version = '0.14'
     op = OmniPingPage(path=cwd)
     op.omniping = OmniPingService(version=version, path=cwd)
     cherrypy.quickstart(op, '/', conf)

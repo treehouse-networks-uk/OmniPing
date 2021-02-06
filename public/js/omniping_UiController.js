@@ -426,7 +426,6 @@ const UICtrl = (function(client){
     if (test.status == '--'){
       tabRow.classList = '';
     }else if (test.status === 'Incomplete' && test.last_stat[0] !== 'G'){
-      console.log(test)
       tabRow.classList = 'fail';
       dontFlag = true;
     }else if(test.status === 'Incomplete'){
@@ -631,13 +630,13 @@ const UICtrl = (function(client){
     rawData = rawData.trim().split('\n');
     rawData.forEach((test) => {
       test = test.trim();
+      let active = true
       if (test[0] == '#'){
-        test = test.replace('#', '').split(':');
-        newTest = [test[0].trim(), test[1].trim(), test[2].toUpperCase().trim(), false];
-        tests.push(newTest);
-      }else{
-        test = test.replace('#', '').split(':');
-        newTest = [test[0].trim(), test[1].trim(), test[2].toUpperCase().trim(), true];
+        active = false
+      }
+      test = test.replace('#', '').split(' :');
+      if (test.length == 3) {
+        newTest = [test[0].trim(), test[1].trim(), test[2].toUpperCase().trim(), active];
         tests.push(newTest);
       }
     });

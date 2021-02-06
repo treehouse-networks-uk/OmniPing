@@ -89,7 +89,7 @@ class OmniPingTester():
         allow for consistent intervals between good (quick) tests and
         failed (timedout) tests
         '''
-        await asyncio.sleep(self.timeout)
+        await asyncio.sleep(self.timeout - 0.12)
         return False
 
     async def ping_tester(self, test_info):
