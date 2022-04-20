@@ -1,3 +1,6 @@
+'''
+Class to manage OmniPing tests and generate a report
+'''
 from datetime import datetime
 import time
 import socket
@@ -5,18 +8,6 @@ import re
 import asyncio
 import http3
 import cherrypy
-
-
-def sucPer(total_trys, successes):
-    '''
-    This is just a function to work out pecentage success
-    and cope with the Zero division
-    '''
-    try:
-        totp = "{0:.2f} %".format(successes/total_trys * 100)
-    except ZeroDivisionError:
-        totp = "0.00 %"
-    return totp
 
 
 class OmniPingTester():
@@ -81,7 +72,6 @@ class OmniPingTester():
             return input_report
         except OSError as e:
             cherrypy.log(f'[EE] {e}')
-
 
     async def dummy_fail(self):
         '''
@@ -200,3 +190,15 @@ class OmniPingTester():
                                             test_info['total_successes']
                                             )
         return test_info
+
+
+def sucPer(total_trys, successes):
+    '''
+    This is just a function to work out pecentage success
+    and cope with the Zero division
+    '''
+    try:
+        totp = "{0:.2f} %".format(successes/total_trys * 100)
+    except ZeroDivisionError:
+        totp = "0.00 %"
+    return totp

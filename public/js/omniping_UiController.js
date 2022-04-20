@@ -222,7 +222,9 @@ const UICtrl = (function(client){
     client.get("/omniping/tests")
       .then((data) => {
         updateMessage('Fetched Setup File');
-        const tests =  textifyTests(data, true);
+        delete data['content'];
+        delete data['message'];
+        const testFileStr = JSON.stringify(data, null, 2);
         const fileDiv = document.createElement('div');
         fileDiv.appendChild(document.createElement('hr'));
         const heading = document.createElement('h3');
@@ -231,7 +233,7 @@ const UICtrl = (function(client){
         fileDiv.appendChild(document.createElement('hr'));
         const newTextArea = document.createElement('textarea');
         newTextArea.id = 'config-file';
-        newTextArea.value = tests;
+        newTextArea.value = testFileStr;
         newTextArea.readOnly = true;
         newTextArea.classList = 'u-full-width';
         const newCol2 = document.createElement('div');
@@ -242,6 +244,8 @@ const UICtrl = (function(client){
         newRow.appendChild(newCol2);
         fileDiv.appendChild(newRow);
         fileDiv.appendChild(document.createElement('hr'));
+        const copyBut = makeButton('Select All', selectAll, 'u-pull-left');
+        fileDiv.appendChild(copyBut);
         showModal(fileDiv, doneFunc);
       }).catch((err) => {
         updateMessage(`Couldn't reach server ${err.message}`);
@@ -249,6 +253,11 @@ const UICtrl = (function(client){
     e.preventDefault();   
   }
 
+  const selectAll = () => {
+    var copyText = document.getElementById("config-file");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+  }
   // ======================================================= GUI Update Functions
 
   const updateReport = (data) => {
@@ -532,7 +541,7 @@ const UICtrl = (function(client){
     buttonArray = new Array(
       makeButton('Save', uploadConfig, 'button-primary'),
       makeButton('Stop & Reset', stopResetReport),
-      makeButton('View File', viewConfigFile),
+      makeButton('Json Config', viewConfigFile),
       makeButton('Restart CherryPy Server', restartCp),
     );
     buttonArray.forEach((button)=>{
@@ -634,9 +643,14 @@ const UICtrl = (function(client){
       if (test[0] == '#'){
         active = false
       }
-      test = test.replace('#', '').split(' :');
+      test = test.replace('#', '').split(/ :|;|: /g);
       if (test.length == 3) {
-        newTest = [test[0].trim(), test[1].trim(), test[2].toUpperCase().trim(), active];
+        newTest = {
+          'host': test[0].trim(),
+          'desc': test[1].trim(),
+          'test': test[2].toUpperCase().trim(),
+          'active': active
+        }
         tests.push(newTest);
       }
     });
@@ -650,10 +664,10 @@ const UICtrl = (function(client){
     }
     tests.tests.forEach((test) => {
       hash = '# ';
-      if (test[3]){
+      if (test['active']){
         hash = '';
       }
-      testConfig += `${hash}${test[0]} : ${test[1]} : ${test[2]}\n`;
+      testConfig += `${hash}${test['host']} ; ${test['desc']} ; ${test['test']}\n`;
     })
     return testConfig;
   }

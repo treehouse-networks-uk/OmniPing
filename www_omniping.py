@@ -1,9 +1,13 @@
-
+'''
+Import cherry py and the OmniPing Service,
+do some config
+start the app
+'''
 import os
 import sys
 import json
 import cherrypy
-from OmniPingServices import OmniPingService
+from omniping_service import OmniPingService
 
 
 class OmniPingPage():
@@ -15,6 +19,9 @@ class OmniPingPage():
 
     @cherrypy.expose
     def index(self):
+        '''
+        return the HTML file required by OmniPing
+        '''
         return open(os.path.join(self.path, 'pages/index.html'))
 
 
@@ -73,7 +80,6 @@ if __name__ == '__main__':
     }
 
     # set the Version number and start the page and application
-    version = '0.14'
     op = OmniPingPage(path=cwd)
-    op.omniping = OmniPingService(version=version, path=cwd)
+    op.omniping = OmniPingService(version='0.15', path=cwd)
     cherrypy.quickstart(op, '/', conf)
