@@ -7,5 +7,6 @@ old_*.py
 test_*.js
 old_*.js
 *.json
+hosts.txt
 ToDo.txt
-omniPing.log
+logs

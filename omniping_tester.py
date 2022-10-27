@@ -64,7 +64,7 @@ class OmniPingTester():
             self.loop.create_task(test_func(test))
 
         try:
-            group = asyncio.gather(*asyncio.Task.all_tasks(loop=self.loop))
+            group = asyncio.gather(*asyncio.all_tasks(loop=self.loop))
             results = self.loop.run_until_complete(group)
             input_report['tests'] = results
             input_report['time'] = datetime.now()
